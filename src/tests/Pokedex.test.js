@@ -5,8 +5,8 @@ import renderWithRouter from '../renderWithRouter';
 import App from '../App';
 import pokemonList from './Data/PokemonList';
 
-const pokemonName = pokemonList.map((pokemon) => pokemon.name);
-const pokemonType = pokemonList.map((pokemon) => pokemon.type);
+// const pokemonName = pokemonList.map((pokemon) => pokemon.name);
+// const pokemonType = pokemonList.map((pokemon) => pokemon.type);
 
 // console.log(pokemonName);
 describe('Teste do componente Pokedex', () => {
