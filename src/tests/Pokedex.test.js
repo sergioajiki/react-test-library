@@ -72,9 +72,11 @@ describe('Teste do componente Pokedex', () => {
         );
         userEvent.click(filterTypeButton);
         const typePokemon = screen.getByTestId('pokemon-type').innerHTML;
-        // console.log(typePokemon);
         expect(typePokemon).toBe(filterTypeButton.innerHTML);
         expect(allButton).toBeInTheDocument();
+        userEvent.click(allButton);
+        const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
+        expect(firstPokemon).toBe('Pikachu');
         expect(allButton).toBeVisible();
       }
       // console.log(type);
@@ -94,6 +96,8 @@ describe('Teste do componente Pokedex', () => {
     expect(allButton).not.toBeDisabled();
     userEvent.click(allButton);
     const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
+    const testeP = screen.getByText('Pikachu');
+    expect(testeP).toBeInTheDocument('Pikachu');
     expect(firstPokemon).toBe('Pikachu');
   });
 
