@@ -3,7 +3,7 @@ import { getNodeText, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import renderWithRouter from '../renderWithRouter';
 import App from '../App';
-import pokemonList from './Data/PokemonList';
+// import pokemonList from './Data/PokemonList';
 
 // const pokemonName = pokemonList.map((pokemon) => pokemon.name);
 // const pokemonType = pokemonList.map((pokemon) => pokemon.type);
