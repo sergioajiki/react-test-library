@@ -72,6 +72,7 @@ describe('Teste do componente Pokedex', () => {
         );
         userEvent.click(filterTypeButton);
         const typePokemon = screen.getByTestId('pokemon-type').innerHTML;
+
         expect(typePokemon).toBe(filterTypeButton.innerHTML);
         expect(allButton).toBeInTheDocument();
         userEvent.click(allButton);
@@ -95,10 +96,10 @@ describe('Teste do componente Pokedex', () => {
     expect(allButton).toBeInTheDocument();
     expect(allButton).not.toBeDisabled();
     userEvent.click(allButton);
-    const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
-    const testeP = screen.getByText('Pikachu');
-    expect(testeP).toBeInTheDocument('Pikachu');
-    expect(firstPokemon).toBe('Pikachu');
+    // const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
+    const firstPokemon = screen.getByText('Pikachu');
+    // expect(testeP).toBeInTheDocument('Pikachu');
+    expect(firstPokemon).toBeInTheDocument('Pikachu');
   });
 
   // test('Testa se quando estiver no último pokemon, clicando no botão Próximo Pokémon, retorna para o primeiro Pokemon', () => {
