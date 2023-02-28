@@ -57,12 +57,13 @@ describe('Teste do componente Pokedex', () => {
     // console.log(pokemonType);
 
     filterButton.forEach((type) => {
-      console.log(type);
+      // console.log(type);
       const filterTypeButton = screen.getByRole(
         'button',
         { name: `${type}` },
       );
       console.log(filterTypeButton.innerHTML);
+      expect(filterTypeButton).toBeInTheDocument();
 
       if (type === filterTypeButton.innerHTML) {
         const allButton = screen.getByRole(
@@ -71,8 +72,9 @@ describe('Teste do componente Pokedex', () => {
         );
         userEvent.click(filterTypeButton);
         const typePokemon = screen.getByTestId('pokemon-type').innerHTML;
-        console.log(typePokemon);
+        // console.log(typePokemon);
         expect(typePokemon).toBe(filterTypeButton.innerHTML);
+        expect(allButton).toBeInTheDocument();
         expect(allButton).toBeVisible();
       }
       // console.log(type);
@@ -87,7 +89,12 @@ describe('Teste do componente Pokedex', () => {
       'button',
       { name: /all/i },
     );
-    expect(allButton).toBeVisible();
+    expect(allButton.innerHTML).toBe('All');
+    expect(allButton).toBeInTheDocument();
+    expect(allButton).not.toBeDisabled();
+    userEvent.click(allButton);
+    const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
+    expect(firstPokemon).toBe('Pikachu');
   });
 
   // test('Testa se quando estiver no último pokemon, clicando no botão Próximo Pokémon, retorna para o primeiro Pokemon', () => {
