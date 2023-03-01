@@ -63,22 +63,30 @@ describe('Teste do componente Pokedex', () => {
         { name: `${type}` },
       );
       console.log(filterTypeButton.innerHTML);
+
       expect(filterTypeButton).toBeInTheDocument();
+      const allButton = screen.getByRole(
+        'button',
+        { name: /all/i },
+      );
+      expect(allButton).toBeInTheDocument();
+
+      const nextButton = screen.getByRole(
+        'button',
+        { name: /Próximo Pokémon/i },
+      );
+      expect(nextButton).toBeInTheDocument();
 
       if (type === filterTypeButton.innerHTML) {
-        const allButton = screen.getByRole(
-          'button',
-          { name: /all/i },
-        );
         userEvent.click(filterTypeButton);
         const typePokemon = screen.getByTestId('pokemon-type').innerHTML;
-
         expect(typePokemon).toBe(filterTypeButton.innerHTML);
         expect(allButton).toBeInTheDocument();
         userEvent.click(allButton);
         const firstPokemon = screen.getByTestId('pokemon-name').innerHTML;
         expect(firstPokemon).toBe('Pikachu');
         expect(allButton).toBeVisible();
+        userEvent.click(nextButton);
       }
       // console.log(type);
       // console.log(typePokemon);
